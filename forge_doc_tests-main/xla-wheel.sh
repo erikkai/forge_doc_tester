@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Sequential build and execution script that handles the multi-stage Docker build and validation pipeline.
+# Manages hardware device passthrough (/dev/tenstorrent) and hugepages allocation 
+# to validate TT-XLA performance on physical silicon. Sets up what's needed to run demo.py and run-xla-wheel.sh.
+
 # Run the Dockerfile
 IMAGE_NAME="base-dock"
 
