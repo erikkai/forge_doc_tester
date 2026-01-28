@@ -1,0 +1,33 @@
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    python3.11 \
+    python3-pip \
+    git \
+    python3-venv \
+    ninja-build \
+    lsb-release \
+    software-properties-common \
+    gnupg \
+    wget && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN wget https://apt.llvm.org/llvm.sh && \
+    chmod u+x llvm.sh && \
+    ./llvm.sh 17 && \
+    apt-get update && apt-get install -y libc++-17-dev libc++abi-17-dev && \
+    ln -s /usr/bin/clang-17 /usr/bin/clang && \
+    ln -s /usr/bin/clang++-17 /usr/bin/clang++ && \
+    rm llvm.sh && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && \
+    wget -q https://github.com/dmakoviichuk-tt/mpi-ulfm/releases/download/v5.0.7-ulfm/openmpi-ulfm_5.0.7-1_amd64.deb -O /tmp/openmpi-ulfm.deb && \
+    apt install -y /tmp/openmpi-ulfm.deb && \
+    rm /tmp/openmpi-ulfm.deb && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN python3 -m pip install --upgrade pip
+RUN pip install cmake==4.0.3

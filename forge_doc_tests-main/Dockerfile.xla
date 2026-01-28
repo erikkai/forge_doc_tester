@@ -1,0 +1,20 @@
+FROM base-dock
+
+# Remove GCC 12 and install GCC 11
+RUN apt-get update && apt-get install -y software-properties-common && \
+    apt-get remove -y gcc g++ && \
+    add-apt-repository ppa:ubuntu-toolchain-r/test -y && \
+    apt-get update && apt-get install -y \
+    gcc-11 \
+    g++-11 && \
+    update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 100 && \
+    update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 100 && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get install -y protobuf-compiler \
+    libprotobuf-dev \
+    ccache \
+    libnuma-dev \
+    libhwloc-dev \
+    libboost-all-dev && \
+    rm -rf /var/lib/apt/lists/*
