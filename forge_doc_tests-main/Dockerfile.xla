@@ -1,3 +1,5 @@
+# Adds the requirements that are specific to working with Forge's TT-XLA front end from Tenstorrent.
+
 FROM base-dock
 
 # Remove GCC 12 and install GCC 11
