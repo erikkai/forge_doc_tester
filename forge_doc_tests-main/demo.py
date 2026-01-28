@@ -1,6 +1,14 @@
 # SPDX-FileCopyrightText: (c) 2025 Tenstorrent AI ULC
 #
 # SPDX-License-Identifier: Apache-2.0
+#
+# Text generation demo using a JAX-optimized GPT-2 model. 
+#
+# This script demonstrates JAX's Just-In-Time (JIT) compilation to optimize 
+# the inference loop for a HuggingFace FlaxGPT2 model. By tracing and 
+# compiling the logit generation, the script significantly reduces latency 
+# compared to native Python execution.
+
 import jax
 import numpy as np
 from transformers import FlaxGPT2LMHeadModel, AutoTokenizer
