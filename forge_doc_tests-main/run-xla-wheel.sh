@@ -1,4 +1,6 @@
 #!/bin/bash
+# Setup script that installs dependencies and runs the validation demo.
+# Installs hardware-specific plugins.
 
 set -e  # Stop the script if any command fails
 
