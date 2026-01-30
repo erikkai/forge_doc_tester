@@ -1,3 +1,5 @@
+[![Link Checker](https://github.com/erikkai/forge_doc_tester/actions/workflows/link-checker.yml/badge.svg)](https://github.com/erikkai/forge_doc_tester/actions/workflows/link-checker.yml)
+
 # Forge Doc Tester
 This content validator uses Docker to create a clean, reproducible environment for testing documentation. By programmatically running code snippets and instruction steps, it identifies broken code or procedures, allowing for targeted fixes. It was developed as a Minimum Viable Product (MVP) to demonstrate how automated testing can create more consistent and stable developer content. 
 
